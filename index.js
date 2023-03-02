@@ -25,8 +25,8 @@ app.get("/", (req, res) => {
   res.status(200).send({ msg: "server is working fine", status: true });
 });
 
-app.use("/api/auth", userRouter);
-app.use("/api/message", messageRouter);
+// app.use("/api/auth", userRouter);
+// app.use("/api/message", messageRouter);
 
 // const server = app.listen(PORT, () => {
 //   console.log(`server running on http://localhost:${PORT}`);
