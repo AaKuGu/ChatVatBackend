@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const { dbConnection } = require("./db/dbConnection");
 const userRouter = require("./routes/userRoutes");
 const messageRouter = require("./routes/messageRoutes");
-// const socket = require("socket.io");
+const socket = require("socket.io");
 // const { check } = require("./config/config");
 
 dotenv.config();
@@ -27,16 +27,16 @@ app.get("/", (req, res) => {
 app.use("/api/auth", userRouter);
 app.use("/api/message", messageRouter);
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
 });
 
-// const io = socket(server, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     credentials: true,
-//   },
-// });
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+});
 
 // global.onlineUsers = new Map();
 
