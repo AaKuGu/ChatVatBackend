@@ -1,17 +1,17 @@
 const express = require("express");
-// const cors = require("cors");
-// const mongoose = require("mongoose");
-// const dotenv = require("dotenv");
-// const bodyParser = require("body-parser");
-// const { dbConnection } = require("./db/dbConnection");
-// const userRouter = require("./routes/userRoutes");
-// const messageRouter = require("./routes/messageRoutes");
-// const socket = require("socket.io");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const { dbConnection } = require("./db/dbConnection");
+const userRouter = require("./routes/userRoutes");
+const messageRouter = require("./routes/messageRoutes");
+const socket = require("socket.io");
 // // const { check } = require("./config/config");
 
 // dotenv.config();
 
-// const app = express();
+const app = express();
 
 // app.use(cors());
 // app.use(bodyParser.json());
@@ -22,7 +22,7 @@ const PORT = process.env.PORT;
 // dbConnection(process.env.MONGO_URL);
 
 app.get("/", (req, res) => {
-  res.status(200).send("Hii");
+  res.status(200).send({ msg: "server is working fine", status: true });
 });
 
 // // app.use("/api/auth", userRouter);
