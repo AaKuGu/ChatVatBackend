@@ -3,8 +3,8 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const { dbConnection } = require("./db/dbConnection");
-// const userRouter = require("./routes/userRoutes");
-// const messageRouter = require("./routes/messageRoutes");
+const userRouter = require("./routes/userRoutes");
+const messageRouter = require("./routes/messageRoutes");
 // const socket = require("socket.io");
 // const { check } = require("./config/config");
 
@@ -24,8 +24,8 @@ app.get("/", (req, res) => {
   res.status(200).send({ msg: "server is working fine", status: true });
 });
 
-// app.use("/api/auth", userRouter);
-// app.use("/api/message", messageRouter);
+app.use("/api/auth", userRouter);
+app.use("/api/message", messageRouter);
 
 app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
