@@ -1,6 +1,6 @@
 const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
+// const cors = require("cors");
+// const mongoose = require("mongoose");
 // const dotenv = require("dotenv");
 // const bodyParser = require("body-parser");
 // const { dbConnection } = require("./db/dbConnection");
@@ -22,7 +22,7 @@ const PORT = process.env.PORT;
 // dbConnection(process.env.MONGO_URL);
 
 app.get("/", (req, res) => {
-  res.status(200).send({ msg: "server is working fine", status: true });
+  res.status(200).send("Hii");
 });
 
 // // app.use("/api/auth", userRouter);
