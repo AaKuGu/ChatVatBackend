@@ -1,12 +1,12 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const dotenv = require("dotenv");
-const bodyParser = require("body-parser");
-const { dbConnection } = require("./db/dbConnection");
-const userRouter = require("./routes/userRoutes");
-const messageRouter = require("./routes/messageRoutes");
-const socket = require("socket.io");
+// const dotenv = require("dotenv");
+// const bodyParser = require("body-parser");
+// const { dbConnection } = require("./db/dbConnection");
+// const userRouter = require("./routes/userRoutes");
+// const messageRouter = require("./routes/messageRoutes");
+// const socket = require("socket.io");
 // // const { check } = require("./config/config");
 
 // dotenv.config();
