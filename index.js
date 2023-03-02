@@ -1,7 +1,7 @@
-// const express = require("express");
+const express = require("express");
 // const cors = require("cors");
 // const mongoose = require("mongoose");
-// const dotenv = require("dotenv");
+const dotenv = require("dotenv");
 // const bodyParser = require("body-parser");
 // const { dbConnection } = require("./db/dbConnection");
 // const userRouter = require("./routes/userRoutes");
@@ -9,21 +9,21 @@
 // const socket = require("socket.io");
 // // // const { check } = require("./config/config");
 
-// // dotenv.config();
+dotenv.config();
 
-// const app = express();
+const app = express();
 
 // // app.use(cors());
 // // app.use(bodyParser.json());
 // // app.use(bodyParser.urlencoded({ extended: true }));
 
-// const PORT = process.env.PORT;
+const PORT = process.env.PORT;
 
 // // dbConnection(process.env.MONGO_URL);
 
-// app.get("/", (req, res) => {
-//   res.status(200).send({ msg: "server is working fine", status: true });
-// });
+app.get("/", (req, res) => {
+  res.status(200).send({ msg: "server is working fine", status: true });
+});
 
 // // // app.use("/api/auth", userRouter);
 // // // app.use("/api/message", messageRouter);
@@ -32,9 +32,9 @@
 // // //   console.log(`server running on http://localhost:${PORT}`);
 // // // });
 
-// app.listen(PORT, () => {
-//   console.log(`server running on http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`server running on http://localhost:${PORT}`);
+});
 
 // // const io = socket(server, {
 // //   cors: {
@@ -66,15 +66,15 @@
 
 // working code 
 
-const express = require("express");
-const app = express();
+// const express = require("express");
+// const app = express();
 
-app.get("/", (req, res) => {
-  res.status(200).send("hii this is working");
-});
+// app.get("/", (req, res) => {
+//   res.status(200).send("hii this is working");
+// });
 
-const PORT = 8000;
+// const PORT = 8000;
 
-app.listen(PORT, () => {
-  console.log("server running");
-});
+// app.listen(PORT, () => {
+//   console.log("server running");
+// });
