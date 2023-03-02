@@ -1,77 +1,77 @@
-// const express = require("express");
-// const cors = require("cors");
-// const mongoose = require("mongoose");
-// const dotenv = require("dotenv");
-// const bodyParser = require("body-parser");
-// const { dbConnection } = require("./db/dbConnection");
-// const userRouter = require("./routes/userRoutes");
-// const messageRouter = require("./routes/messageRoutes");
-// const socket = require("socket.io");
-// // const { check } = require("./config/config");
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const { dbConnection } = require("./db/dbConnection");
+const userRouter = require("./routes/userRoutes");
+const messageRouter = require("./routes/messageRoutes");
+const socket = require("socket.io");
+const { check } = require("./config/config");
 
-// dotenv.config();
+dotenv.config();
 
-// const app = express();
+const app = express();
 
-// app.use(cors());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// const PORT = process.env.PORT;
+const PORT = process.env.PORT;
 
-// dbConnection(process.env.MONGO_URL);
+dbConnection(process.env.MONGO_URL);
 
-// app.get("/", (req, res) => {
-//   res.status(200).send({ msg: "server is working fine", status: true });
-// });
+app.get("/", (req, res) => {
+  res.status(200).send({ msg: "server is working fine", status: true });
+});
 
-// app.use("/api/auth", userRouter);
-// app.use("/api/message", messageRouter);
+app.use("/api/auth", userRouter);
+app.use("/api/message", messageRouter);
 
-// const server = app.listen(PORT, () => {
-//   console.log(`server running on http://localhost:${PORT}`);
-// });
+const server = app.listen(PORT, () => {
+  console.log(`server running on http://localhost:${PORT}`);
+});
 
 
-// const io = socket(server, {
-//   cors: {
-//     origin: "http://localhost:3000",
-//     credentials: true,
-//   },
-// });
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+});
 
-// global.onlineUsers = new Map();
+global.onlineUsers = new Map();
 
-// io.on("connection", (socket) => {
-//   global.chatSocket = socket;
-//   socket.on("add-user", (userId) => {
-//     // console.log("add-user : ", userId);
-//     onlineUsers.set(userId, socket.id);
-//   });
-//   // console.log("reached to socket");
-//   socket.on("send-msg", (data) => {
-//     const sendUserSocket = onlineUsers.get(data.to);
-//     console.log("reached to socket if", data);
+io.on("connection", (socket) => {
+  global.chatSocket = socket;
+  socket.on("add-user", (userId) => {
+    // console.log("add-user : ", userId);
+    onlineUsers.set(userId, socket.id);
+  });
+  // console.log("reached to socket");
+  socket.on("send-msg", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    console.log("reached to socket if", data);
 
-//     if (sendUserSocket) {
-//       // console.log("msg-receive socket if : ", data.message);
-//       socket.to(sendUserSocket).emit("msg-receive", data.message);
-//     }
-//   });
-// });
+    if (sendUserSocket) {
+      // console.log("msg-receive socket if : ", data.message);
+      socket.to(sendUserSocket).emit("msg-receive", data.message);
+    }
+  });
+});
 
 
 // working code 
 
-const express = require("express");
-const app = express();
+// const express = require("express");
+// const app = express();
 
-app.get("/", (req, res) => {
-  res.status(200).send("hii this is working");
-});
+// app.get("/", (req, res) => {
+//   res.status(200).send("hii this is working");
+// });
 
-const PORT = 8000;
+// const PORT = 8000;
 
-app.listen(PORT, () => {
-  console.log("server running");
-});
+// app.listen(PORT, () => {
+//   console.log("server running");
+// });
