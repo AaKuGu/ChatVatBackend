@@ -21,9 +21,9 @@ const PORT = process.env.PORT;
 
 // dbConnection(process.env.MONGO_URL);
 
-// app.get("/", (req, res) => {
-//   res.status(200).send({ msg: "server is working fine", status: true });
-// });
+app.get("/", (req, res) => {
+  res.status(200).send({ msg: "server is working fine", status: true });
+});
 
 // // app.use("/api/auth", userRouter);
 // // app.use("/api/message", messageRouter);
