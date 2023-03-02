@@ -1,9 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-// const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 // const bodyParser = require("body-parser");
-// const { dbConnection } = require("./db/dbConnection");
+const { dbConnection } = require("./db/dbConnection");
 // const userRouter = require("./routes/userRoutes");
 // const messageRouter = require("./routes/messageRoutes");
 // const socket = require("socket.io");
@@ -19,7 +18,7 @@ app.use(cors());
 
 const PORT = process.env.PORT;
 
-// dbConnection(process.env.MONGO_URL);
+dbConnection(process.env.MONGO_URL);
 
 app.get("/", (req, res) => {
   res.status(200).send({ msg: "server is working fine", status: true });
