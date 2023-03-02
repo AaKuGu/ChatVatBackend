@@ -26,7 +26,7 @@ app.use("/api/auth", userRouter);
 app.use("/api/message", messageRouter);
 
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.status(200).send({ msg: "server is working fine", status: true });
 });
 
