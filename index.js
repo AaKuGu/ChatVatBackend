@@ -1,12 +1,12 @@
-// const express = require("express");
-// const cors = require("cors");
-// const mongoose = require("mongoose");
-// const dotenv = require("dotenv");
-// const bodyParser = require("body-parser");
-// const { dbConnection } = require("./db/dbConnection");
-// const userRouter = require("./routes/userRoutes");
-// const messageRouter = require("./routes/messageRoutes");
-// const socket = require("socket.io");
+const express = require("express");
+const cors = require("cors");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const bodyParser = require("body-parser");
+const { dbConnection } = require("./db/dbConnection");
+const userRouter = require("./routes/userRoutes");
+const messageRouter = require("./routes/messageRoutes");
+const socket = require("socket.io");
 // // const { check } = require("./config/config");
 
 // dotenv.config();
@@ -17,7 +17,7 @@
 // app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true }));
 
-// const PORT = process.env.PORT;
+const PORT = process.env.PORT;
 
 // dbConnection(process.env.MONGO_URL);
 
@@ -32,9 +32,9 @@
 // //   console.log(`server running on http://localhost:${PORT}`);
 // // });
 
-// app.listen(PORT, () => {
-//   console.log(`server running on http://localhost:${PORT}`);
-// });
+app.listen(PORT, () => {
+  console.log(`server running on http://localhost:${PORT}`);
+});
 
 // // const io = socket(server, {
 // //   cors: {
@@ -63,15 +63,18 @@
 // //   });
 // // });
 
-const express = require("express");
-const app = express();
 
-app.get("/", (req, res) => {
-  res.status(200).send("hii this is working");
-});
+// working code 
 
-const PORT = 8000;
+// const express = require("express");
+// const app = express();
 
-app.listen(PORT, () => {
-  console.log("server running");
-});
+// app.get("/", (req, res) => {
+//   res.status(200).send("hii this is working");
+// });
+
+// const PORT = 8000;
+
+// app.listen(PORT, () => {
+//   console.log("server running");
+// });
