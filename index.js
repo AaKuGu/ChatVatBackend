@@ -38,25 +38,25 @@ const io = socket(server, {
   },
 });
 
-// global.onlineUsers = new Map();
+global.onlineUsers = new Map();
 
-// io.on("connection", (socket) => {
-//   global.chatSocket = socket;
-//   socket.on("add-user", (userId) => {
-//     // console.log("add-user : ", userId);
-//     onlineUsers.set(userId, socket.id);
-//   });
-//   // console.log("reached to socket");
-//   socket.on("send-msg", (data) => {
-//     const sendUserSocket = onlineUsers.get(data.to);
-//     console.log("reached to socket if", data);
+io.on("connection", (socket) => {
+  global.chatSocket = socket;
+  socket.on("add-user", (userId) => {
+    // console.log("add-user : ", userId);
+    onlineUsers.set(userId, socket.id);
+  });
+  // console.log("reached to socket");
+  socket.on("send-msg", (data) => {
+    const sendUserSocket = onlineUsers.get(data.to);
+    console.log("reached to socket if", data);
 
-//     if (sendUserSocket) {
-//       // console.log("msg-receive socket if : ", data.message);
-//       socket.to(sendUserSocket).emit("msg-receive", data.message);
-//     }
-//   });
-// });
+    if (sendUserSocket) {
+      // console.log("msg-receive socket if : ", data.message);
+      socket.to(sendUserSocket).emit("msg-receive", data.message);
+    }
+  });
+});
 
 // working code
 
