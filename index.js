@@ -7,6 +7,7 @@ const { dbConnection } = require("./db/dbConnection");
 const userRouter = require("./routes/userRoutes");
 const messageRouter = require("./routes/messageRoutes");
 const socket = require("socket.io");
+// const { check } = require("./config/config");
 
 dotenv.config();
 
@@ -20,11 +21,14 @@ const PORT = process.env.PORT;
 
 dbConnection(process.env.MONGO_URL);
 
+
+app.use("/api/auth", userRouter);
+app.use("/api/message", messageRouter);
+
+
 app.use("/", (req, res) => {
   res.status(200).send({ msg: "server is working fine", status: true });
 });
-app.use("/api/auth", userRouter);
-app.use("/api/message", messageRouter);
 
 const server = app.listen(PORT, () => {
   // console.log(`server running on http://localhost:${PORT}`);
