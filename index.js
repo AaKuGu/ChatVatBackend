@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
-// const bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const { dbConnection } = require("./db/dbConnection");
 // const userRouter = require("./routes/userRoutes");
 // const messageRouter = require("./routes/messageRoutes");
@@ -13,8 +13,8 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const PORT = process.env.PORT;
 
